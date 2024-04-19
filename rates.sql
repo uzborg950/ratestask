@@ -30,7 +30,7 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE ports (
-    code text NOT NULL,
+    code char(5),
     name text NOT NULL,
     parent_slug text NOT NULL
 );
@@ -41,10 +41,10 @@ CREATE TABLE ports (
 --
 
 CREATE TABLE prices (
-    orig_code text NOT NULL,
-    dest_code text NOT NULL,
+    orig_code char(5) NOT NULL,
+    dest_code char(5) NOT NULL,
     day date NOT NULL,
-    price integer NOT NULL
+    price float NOT NULL
 );
 
 
