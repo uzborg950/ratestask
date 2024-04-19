@@ -1,0 +1,6 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/price/avgPriceForRange?date_from=2016-01-01&date_to=2018-03-01&origin=CNSGH&destination=north_europe_main&impute_with_null=true&min_sample_size=3
+Accept: application/json
+
+###
