@@ -13,15 +13,15 @@ The database schema consists of the following entities:
 ## API Endpoints
 The API exposes the following endpoints:
 
-- **/ports**: Retrieves information about ports.
-- **/regions**: Retrieves information about regions.
+- **/ports**: Retrieves information about ports. (Future work)
+- **/regions**: Retrieves information about regions. (Future work)
 - **/prices**: Retrieves average prices between routes for shipping freight. Users can specify source and destination ports, date range, and other filters.
 
 ## Usage
 1. Clone the repository.
 2. Run `docker-compose up --build`
 3. Open SwaggerUI docs to play with API: `127.0.0.1:8000/docs`
-4. Connect with local DB with the following credentialsL:
+4. Connect with local DB with the following credentials:
     ```
     POSTGRES_DB: xeneta_db
     POSTGRES_USER: xeneta_user
