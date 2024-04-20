@@ -4,8 +4,6 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 
-
-
 class RequestValidationException(Exception):
     def __init__(self, param_name: str, param_value: str, extra_message=''):
         self.param_name = param_name
@@ -19,6 +17,12 @@ class InvalidDateRangeException(Exception):
         self.date_from_value = date_from_value
         self.date_to_param = date_to_param
         self.date_to_value = date_to_value
+
+
+class InvalidRouteException(Exception):
+    def __init__(self, origin: str, destination: str):
+        self.origin = origin
+        self.destination = destination
 
 
 def init_exception_handlers(app: FastAPI):
@@ -36,4 +40,12 @@ def init_exception_handlers(app: FastAPI):
             status_code=422,
             content={
                 "message": f"invalid date range entered in parameter: {exc.date_from_param}: {exc.date_from_value} -> {exc.date_to_param}: {exc.date_to_value}."},
+        )
+
+    @app.exception_handler(InvalidRouteException)
+    async def invalid_route_exception_hander(request: Request, exc: InvalidRouteException):
+        return JSONResponse(
+            status_code=400,
+            content={
+                "message": f"one or both of these locations are invalid: {exc.origin}->{exc.destination}"},
         )
