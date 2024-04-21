@@ -3,12 +3,14 @@ from typing import List
 
 from fastapi import APIRouter
 
-import src.price.service.price_service as price_service
 from src.exceptions.exception_handlers import RequestValidationException, InvalidDateRangeException
+from src.dependency_injection import price_service
 from src.price.controller.model import AvgPriceResponse
 from src.price.controller.validation import validate_date
 from src.price.service.model import PriceRequestDTO
 from src.utils.constants import DATE_FORMAT
+
+
 
 router = APIRouter(
     prefix="/price",
